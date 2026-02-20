@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 2</title>
+  </head>
+  <body>
+    <h1>Assignment 2</h1>
+
+    <form id="socialMedia">
+      <label for="author">Author:</label>
+      <input type="text" id="author" />
+      <br />
+      <label for="content">Content:</label>
+      <textarea id="content"></textarea>
+      <br />
+      <label for="likes">Likes:</label>
+      <input type="number" id="likes" />
+      <br />
+      <label for="tags">Tags:</label>
+      <input type="text" id="tags" />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+    <br>
+
+    <h3>Filter by tags</h2>
+    <button onclick="showTagPosts('javascript')">JS</button>
+    <button onclick="showTagPosts('react')">React</button>
+    <button onclick="showTagPosts('html')">HTML</button>
+    <br>
+    <hr/>
+
+    <h3>Social feed: </h3>
+    <button onclick="showTrending()">show only trending</button>
+    <ul id="list"></ul>
+    <hr>
+    <br>
+    <button onclick="showAuthors()">show authors</button>
+    <ul id="listAuthor"></ul>
+
+    <script src="script.js"></script>
+  </body>
+</html>
