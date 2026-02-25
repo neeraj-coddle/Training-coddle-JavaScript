@@ -240,7 +240,7 @@ console.log(account2.getBalance());
 
 
 // ----------------------------------------------------------------------------------------------------------------------------------- 
-console.log("");
+console.log(""); 
 
 
 // 4.
@@ -268,6 +268,12 @@ document.getElementById("inputsearch").addEventListener("input", debouncedSearch
   let searchword = document.getElementById("inputsearch").value; 
   console.log("searching for :",searchword);
 }
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------- 
+console.log(""); 
+
+
 
 // 5.
 //   The Super-Class Challenge:
