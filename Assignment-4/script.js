@@ -46,7 +46,9 @@ function fetchData() {
 }
 
 function clearlist() {
-    list_view.innerHTML = " ";
+    list_view.innerHTML = " "; 
+    document.getElementById("cityName").value = "";
+    document.getElementById("departureDate").value = ""; 
 }
 
 //  2. 
