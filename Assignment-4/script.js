@@ -155,7 +155,7 @@ function toggleTheme() {
     document.body.style.color = "black";
     theme = false;
   } else {
-    document.body.style.backgroundColor = "black";
+    document.body.style.backgroundColor = "#63718D";
     document.body.style.color = "white";
     theme = true;
   }
