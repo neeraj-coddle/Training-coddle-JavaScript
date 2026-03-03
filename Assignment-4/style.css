@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black;
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
+input, button {
+  padding: 6px 10px;
+  margin: 5px 0;
+}
+
+#list_view {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+#list_view img {
+  display: block;
+  margin-top: 10px;
+}
+
+#trips {
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#deletebox {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border: 1px solid black;
+  width: 250px;
+  text-align: center;
+}
+

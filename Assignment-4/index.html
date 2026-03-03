@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather-Driven Travel Planner</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Weather-Driven Travel Planner</h1>
+
+  <input type="date" id="departureDate"> <br>
+  <input type="text" id="cityName" placeholder="Enter city name"> <br> 
+  <button onclick="clearlist()">reset search</button>
+
+  <p id="loading" style="display:none;">Loading...</p>
+
+  <div id="list_view"></div>
+
+  <h2>My Trips</h2>
+  <div id="totalTrips"></div>
+  <div id="trips"><p>your trips will be shown here</p></div>
+  <div id="deletebox" style="display:none;">
+    <p>Are you sure you want to delete this trip?</p>
+    <button onclick="deleteTrip()">Yes</button>
+    <button onclick="closedeletebox()">No</button>
+  </div>
+
+  <hr>
+  <button onclick="toggleTheme()">Toggle Theme</button>
+
+
+  <script src="script.js"></script>
+</body>
+</html> 
