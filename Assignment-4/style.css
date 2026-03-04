@@ -40,3 +40,10 @@ input, button {
   text-align: center;
 }
 
+#list_view span{
+  color: #45B8BCFF;
+} 
+
+#list_view h3{
+  color: #D07171FF;
+} 

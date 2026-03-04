@@ -12,9 +12,13 @@ function fetchData() {
 
   if (!city || !date) return;
 
-  if (new Date(date) < new Date()) return;
+  if (new Date(date) < new Date()) {
+    document.getElementById("departureDate").value = " "; 
+      alert("past date not allowed"); 
+      return; 
+  }; 
 
-  loading.style.display = "block";
+  loading.style.display = "block"; 
 
   Promise.all([
     fetch(
@@ -37,9 +41,11 @@ function fetchData() {
 
     list_view.innerHTML = `
       <h3>${weather.name}, ${weather.sys.country}</h3>
-      <p>Temperature: ${weather.main.temp} °C</p>
       <img src="${image.results[0].urls.small}" width="200">
-      <br><br>
+      <p>Temperature: <span>${weather.main.temp}°C</span> </p>
+      <p>Wind speed: <span>${weather.wind.speed}kn</span> </p>
+      <p>Atmosphere: <span>${weather.weather[0].description}</span> </p>
+      <br>
       <button onclick="saveTrip('${weather.name}','${weather.sys.country}','${date}','${weather.main.temp}')"> Save to My Trips </button>
     `;
   });
@@ -50,6 +56,8 @@ function clearlist() {
     document.getElementById("cityName").value = "";
     document.getElementById("departureDate").value = ""; 
 }
+
+// ------------------------------------------------------------------------------------------------------------------------------- 
 
 //  2. 
 //  A. 
@@ -77,7 +85,11 @@ class TravelManager {
     const savedTrips = JSON.parse(localStorage.getItem("trips")) || [];
 
     this.trips = savedTrips.map(
-    trip => new Trip(trip.id, trip.city, trip.date)
+    trip => new Trip(trip.id,
+      trip.city,
+      trip.country,
+      trip.departureDate,
+      trip.weatherSnapshot)
   );
   }
 
@@ -95,10 +107,14 @@ class TravelManager {
 
   save() {
     localStorage.setItem("trips", JSON.stringify(this.trips));
+    console.log("saved trips : ", this.trips);
+    
   }
 }
-
 let manager = new TravelManager();
+
+// ------------------------------------------------------------------------------------------------------------------------------- 
+
 
 function saveTrip(city, country, date, temp) {
   let trip = new Trip(
@@ -111,6 +127,7 @@ function saveTrip(city, country, date, temp) {
 
   manager.addTrip(trip);
   showTrips();
+  document.getElementById("list_view").innerHTML = "";
 }
 
 function showTrips() {
@@ -126,10 +143,12 @@ function showTrips() {
       </div>
     `;
   });
+  document.getElementById("totalTrips").innerText = "Total Trips: " + manager.trips.length; 
 }
 
-let tripToDelete = null;
+// ------------------------------------------------------------------------------------------------------------------------------- 
 
+let tripToDelete = null;
 function confirmDelete(id) {
   tripToDelete = id;
   document.getElementById("deletebox").style.display = "block";
@@ -145,10 +164,9 @@ function closedeletebox() {
   document.getElementById("deletebox").style.display = "none";
 }
 
-// 
+// ------------------------------------------------------------------------------------------------------------------------------- 
 
 let theme = false;
-
 function toggleTheme() {
   if (theme) {
     document.body.style.backgroundColor = "white";
@@ -161,6 +179,8 @@ function toggleTheme() {
   }
 }
 
+// ------------------------------------------------------------------------------------------------------------------------------- 
+
 function debounce(fun,delay) {
   let timer;
 
@@ -171,7 +191,7 @@ function debounce(fun,delay) {
       fun();
     },delay); 
   }
-}; 
+} 
 
 const dbSearch= debounce(fetchData,500);
 
