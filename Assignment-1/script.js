@@ -13,12 +13,14 @@ console.log("str :" + typeof (str)); //string
 x = true;
 console.log("x :" + typeof (x)); //boolean 
 
+// Important: Recheck this is it actually returning null or object
 x = null;
 console.log("x :" + typeof (x)); //Null
 
 const user = { name: "abi", age: 12 };
 console.log("user :" + typeof (user)); //object 
 
+// Important: Recheck this is it actually returning array or object
 const arr = [1, 2, 3, 4, 5, 6, 7];
 console.log("arr :" + typeof (arr)); //array 
 
@@ -34,7 +36,7 @@ console.log("abc :" + typeof (abc)); //function
 // ----------------------------------------------------------------------------------------------------------------------------- 
 
 // 2. Write a JS program to show an alert message on the loading of the website.
-
+// Important:check window. function have a better clarity why window. is used.
 alert("this is a alert message. "); 
 
 
@@ -53,7 +55,7 @@ console.log("arr1 length after removing 6 :" + arr1.length);
 arr1 = ["1", "2", "3", "4", "5", "6", "7"];
 
 arr1 = arr1.map(num => Number(num));
-
+// Important: check foreach how it works. 
 let typeof_arr1 = arr1.map(num => typeof (num)
 );
 
@@ -65,7 +67,7 @@ console.log(typeof_arr1);
 // C. Remove last three items of the array, use JS provided array method, then console the array
 //  and then add "one" and "two" (strings) to the beginning of the array and console the array.  
 arr1 = ["1", "2", "3", "4", "5", "6", "7"];
-
+// Important: Dont mutate the original array.
 arr1.splice(-3);
 console.log(arr1);
 
@@ -105,7 +107,7 @@ arr1.map(num => {
 //  only if both items of the array have same data type. (Compare each item of this array with each item of the other array) 
 arr1 = ["1", "2", "3", "4", "5", "6", "7"];
 let arr2 = [1, 2, "3", 4, 5, 6, "7"];
-
+// important: check (arr1[i] === arr2[j])  
 let arr1_length = arr1.length;
 let arr2_length = arr2.length;
 for (let i = 0; i <= arr1_length - 1; i++) {
@@ -120,7 +122,7 @@ for (let i = 0; i <= arr1_length - 1; i++) {
 // H. [0,2,3,7,5,6,8] iterates the array and multiplies each item by its index value and console the result only if result is greater than 40. 
 let arr3 = [0, 2, 3, 7, 5, 6, 8];
 let result = 0;
-
+// Important: condition check >=40
 arr3.forEach((num, ind) => {
     result = num * ind;
     if (result >= 40) {
@@ -133,6 +135,7 @@ let arr4 = [1, 2, 3, 4, 5];
 let arr5 = [6, 7, 8, 9, 10];
 
 let concatedArray = arr4.concat(arr5);
+// important: correct and also check spreadoperator
 console.log("concated array : " + concatedArray);
 
 // ----------------------------------------------------------------------------------------------------------------------------- 
