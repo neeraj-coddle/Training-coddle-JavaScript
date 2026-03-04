@@ -42,8 +42,8 @@ function fetchData() {
     list_view.innerHTML = `
       <h3>${weather.name}, ${weather.sys.country}</h3>
       <img src="${image.results[0].urls.small}" width="200">
-      <p>Temperature: <span>${weather.main.temp}°C</span> </p>
-      <p>Wind speed: <span>${weather.wind.speed}kn</span> </p>
+      <p>Temperature: <span>${weather.main.temp} °C</span> </p>
+      <p>Wind speed: <span>${weather.wind.speed} kn</span> </p>
       <p>Atmosphere: <span>${weather.weather[0].description}</span> </p>
       <br>
       <button onclick="saveTrip('${weather.name}','${weather.sys.country}','${date}','${weather.main.temp}')"> Save to My Trips </button>
@@ -124,6 +124,8 @@ function saveTrip(city, country, date, temp) {
     date,
     { temperature: temp }
   );
+  console.log(trip);
+  
 
   manager.addTrip(trip);
   showTrips();
@@ -136,11 +138,14 @@ function showTrips() {
 
   manager.trips.forEach(trip => {
     tripsbox.innerHTML += `
-      <div>
-        <h4>${trip.city}, ${trip.country}</h4>
+      <ul><li>
+        <h4>${trip.city}, ${trip.country}</h4> 
+        <p>weather : ${trip.weatherSnapshot.temperature}</p> 
+        <p>Departure date : ${trip.departureDate}</p> 
         <p>Days left: ${trip.getCountdown()}</p>
         <button onclick="confirmDelete(${trip.id})"> Cancel Trip </button>
-      </div>
+        <hr>
+      </li></ul>
     `;
   });
   document.getElementById("totalTrips").innerText = "Total Trips: " + manager.trips.length; 
