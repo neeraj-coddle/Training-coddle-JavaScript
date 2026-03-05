@@ -123,3 +123,9 @@ const editpost = (id) => {
 
   localStorage.setItem("allPost", JSON.stringify(allPost));
 };
+// Important: Changes
+// even after refresh the allposts are not showing the UI.
+// Like should not be -Ve
+// make required fields otherwise empty datas are showing in the below cards.
+// tags prepopulate in the filter section.
+// edit shows wrong alert.
