@@ -24,8 +24,14 @@ let objectTwo = {
   ],
 };
 // used include method in filtering 
-let updated_objectTwo = objectTwo.data.filter((item) => !["7","24"].includes(item.id));
-console.log("Q2 : ", updated_objectTwo);
+
+// removed items with 7 and 24 
+let removed = objectTwo.data.filter((item) => !["7","24"].includes(item.id));
+console.log("Q2 : after removing 7 and 24 ", removed);
+
+// removed items with 7 and 24 
+let updated = objectTwo.data.filter((item) => ["7","24"].includes(item.id));
+console.log("Q2 : only including 7 and 24  ", updated);
 
 // -----------------------------------------------------------------------------------------------------------------------------------------------
 console.log("");
