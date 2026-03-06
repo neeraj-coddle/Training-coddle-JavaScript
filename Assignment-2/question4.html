@@ -13,13 +13,14 @@
 
     <form id="socialMedia">
       <label for="author">Author:</label>
-      <input type="text" id="author" />
+      <input type="text" id="author" required />
       <br />
       <label for="content">Content:</label>
-      <textarea id="content"></textarea>
+      <textarea id="content" required></textarea>
       <br />
       <label for="likes">Likes:</label>
-      <input type="number" id="likes" />
+      <input type="number" id="likes" min="0" /> 
+      <!-- added min attribute so the likes likes wont go below 0 value  -->
       <br />
       <label for="tags">Tags:</label>
       <input type="text" id="tags" />
@@ -29,9 +30,8 @@
     <br>
 
     <h3>Filter by tags</h2>
-    <button onclick="showTagPosts('javascript')">JS</button>
-    <button onclick="showTagPosts('react')">React</button>
-    <button onclick="showTagPosts('html')">HTML</button>
+    <div id="filterbtns"></div><br>
+    <button onclick="resetFilter()">Clear tag filter</button>
     <br>
     <hr/>
 

@@ -23,8 +23,8 @@ let objectTwo = {
     { a: "five", id: "212" },
   ],
 };
-
-let updated_objectTwo = objectTwo.data.filter((item) => item.id !== "24");
+// used include method in filtering 
+let updated_objectTwo = objectTwo.data.filter((item) => !["7","24"].includes(item.id));
 console.log("Q2 : ", updated_objectTwo);
 
 // -----------------------------------------------------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ console.log("");
 // D. To show an alert message after 10sec while the page is refreshed.
 
 // A.
-let screenHeight = screen.height;
+let screenHeight = window.innerHeight;
 console.log("Q3 A : ", screenHeight);
 
 // B.
@@ -54,3 +54,4 @@ if (protocol !== "https:") {
 setTimeout(() => {
     alert("An alert message after 10 seconds.");
 }, 10000);
+ 
