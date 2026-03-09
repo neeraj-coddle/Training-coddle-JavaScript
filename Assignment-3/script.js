@@ -109,20 +109,24 @@ async function findUser() {
   const loading = document.getElementById("loading");
   const foundUser = document.getElementById("userData");
 
+  if (id == "") {
+    alert("type a id number, can't search with null value. ")
+    return; 
+  }
   loading.style.display = "block";
   if (id < 1 || id > 10) {
     alert("enter number between 1 and 10");
     loading.style.display = "none";
     return;
   }
+  console.log("1");
   
   try {
     const response = await fetch(
-      `https://jsonplaceholder.typicode.com/users/${id}`,
     );
     const userData = await response.json();
     console.log(userData);
-
+    
     displayUser(userData);
     loading.style.display = "none";
   } catch (error) {
@@ -262,7 +266,6 @@ function debounce(func, delay) {
 const debouncedSearch = debounce(searchfun, 500);
 
 document.getElementById("inputsearch").addEventListener("input", debouncedSearch);
-
   
   function searchfun() {
   let searchword = document.getElementById("inputsearch").value; 

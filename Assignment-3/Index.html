@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Assignment-3</title>
     <link rel="stylesheet" href="style/style.css">
   </head>
   <body>
@@ -26,11 +26,9 @@
     </form> <hr> <br>
 
     <h3>Search by id </h3>
-    <form onsubmit="findUser()">
-      <label for="search">Enter the id: </label>
-      <input type="number" id="search" required >
-      <button type="submit">search</button> 
-    </form>
+    <label for="search">Enter the id: </label>
+    <input type="number" id="search" placeholder="Type an number from 1 to 10" required >
+    <button onclick="findUser()">search</button> 
     <p id="loading" style="display: none;">loading.....</p>
     <ul id="userData"></ul>
 
