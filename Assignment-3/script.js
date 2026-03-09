@@ -104,15 +104,13 @@ form.addEventListener("submit", async (event) => {
 
 // ------------------------------------------------------------------------------------------------------------
 
-async function findUser() {
+async function findUser(event) {
   const id = document.getElementById("search").value;
   const loading = document.getElementById("loading");
   const foundUser = document.getElementById("userData");
 
-  if (id == "") {
-    alert("type a id number, can't search with null value. ")
-    return; 
-  }
+  event.preventDefault(); 
+  
   loading.style.display = "block";
   if (id < 1 || id > 10) {
     alert("enter number between 1 and 10");

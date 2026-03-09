@@ -26,9 +26,11 @@
     </form> <hr> <br>
 
     <h3>Search by id </h3>
-    <label for="search">Enter the id: </label>
-    <input type="number" id="search" placeholder="Type an number from 1 to 10" required >
-    <button onclick="findUser()">search</button> 
+    <form onsubmit="findUser(event)">
+      <label for="search">Enter the id: </label>
+      <input type="number" id="search" placeholder="Type an number from 1 to 10" required >
+      <button type="submit">search</button> 
+    </form>
     <p id="loading" style="display: none;">loading.....</p>
     <ul id="userData"></ul>
 
