@@ -1,6 +1,5 @@
-var currentIndex = 0;
+var currentIndex = 1;
 console.log("index",currentIndex);
-//value set to 0
 
 displaySlides(currentIndex);
 
@@ -37,7 +36,7 @@ function displaySlides(num) {
   }
 
   slides[currentIndex].style.display = "block"; 
-  // should change the display value after changing the display to none 
+  // should change the display value after changing the display to none or else it will be changed 
+  // back to none and wont get displayed
   
-  console.log("------------------------------------------------"); 
 }
