@@ -293,13 +293,10 @@ class Vehicle {
   }
 
   drive() {
-    return 'Moving at' + this.speed + 'km/h';
-    // console.log(`Moving at ${this.speed} km/h`);
+    console.log(`Moving at ${this.speed} km/h`);
   }
   carBrand() {
-    return 'The car brand is : ' + this.brand; 
-    // console.log(`the car brand is ${this.brand}. `);
-    
+    console.log(`the car brand is ${this.brand}. `);
   }
 }
 
@@ -310,13 +307,10 @@ class electricCar extends Vehicle {
   }
   
   drive() {
-    return 'Moving silently at ' + this.speed + 'km/h with ' + this.batteryLevel + '% charge.'
-    // console.log(`Moving silently at ${this.speed} km/h with ${this.batteryLevel}% charge.`,); 
+    console.log(`Moving silently at ${this.speed} km/h with ${this.batteryLevel}% charge.`,); 
   }
   carBrand() {
-    return 'The car brand is : ' + this.brand; 
-    // console.log(`the car brand is ${this.brand}. `);
-    
+    console.log(`the car brand is ${this.brand}. `);
   }
 }
 
