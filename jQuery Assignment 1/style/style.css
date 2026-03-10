@@ -1,0 +1,47 @@
+body{
+    margin: 40px;
+    padding: 20px;
+    border: 1px solid rgb(182, 174, 174);
+}
+
+#addTask{
+    border-radius: 6px;
+}
+
+/* .taskList{
+    display: none;
+} */
+
+h1{
+    text-align: center;
+}
+
+#taskForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.popUp{
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+      border: 1px solid #ccc;
+    padding: 15px;
+    width: 250px;
+    background: white;
+    margin-top: 10px;
+}
+
+table{
+    border-collapse: collapse;
+    margin-top: 22px;
+    border-radius: 10px;
+}
+
+th, td{
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+}
+
