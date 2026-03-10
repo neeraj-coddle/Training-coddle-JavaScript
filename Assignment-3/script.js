@@ -120,8 +120,7 @@ async function findUser(event) {
   console.log("1");
   
   try {
-    const response = await fetch(
-    );
+    const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
     const userData = await response.json();
     console.log(userData);
     
@@ -212,9 +211,9 @@ class BankAccount {
         console.log("invalid deposit amount");
         return; 
       }
+      this.#balance += amount;
       console.log(`Deposit amount : ${amount}`);
       console.log(`balance after deposit : ${this.#balance}`);
-    this.#balance += amount;
   }
 
   withdraw(amount) {
@@ -222,9 +221,9 @@ class BankAccount {
       console.log("Insufficient balance");
       return;
     }
+    this.#balance -= amount;
       console.log(`withdrawn amount : ${amount}`);
       console.log(`balance after withdrawing : ${this.#balance}`);
-    this.#balance -= amount;
   }
 
   getBalance() {
