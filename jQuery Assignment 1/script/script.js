@@ -40,9 +40,13 @@ $(".popUp").hide()
 $(".taskForm").on("submit",function(event){
 
 event.preventDefault()
+let date = $("#estimatedTime").val()
+  if (new Date(date) < new Date()){
+    alert("past date not allowed. please enter a date in future"); 
+    return;
+  };
 
 let title = $("#taskTitle").val()
-let date = $("#estimatedTime").val()
 let priority = $("#priority").val()
 tasks.push({
     title: title,
@@ -91,7 +95,7 @@ $(".taskList tbody").append(row)
 
 })
 
-$(document).on("click",".deleteButton",function(){
+$(document).on("click",".deleteButton",function(){ 
 
 let row = $(this).closest("tr")
 let index = row.index()
