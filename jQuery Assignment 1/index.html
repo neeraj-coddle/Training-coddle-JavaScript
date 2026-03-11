@@ -1,56 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>jQuery Assignment-1</title>
     <script src="script/jquery-4.0.0.min.js" defer></script>
     <script src="script/script.js" defer></script>
-    <link rel="stylesheet" href="style/style.css">
-</head>
-<body>
-    <h1>jQuery Assignment-1</h1>    
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <h1>jQuery Assignment-1</h1>
     <hr>
     <h2>To-do list</h2><br>
 
     <button id="addTask">Add task</button>
+    <p id="Message">No task to show.</p>
 
-    <div class="popUp">
-        <h3>Add task</h3>
+    <div class="overlay">
+      <div class="popUp">
+      <h3>Add task</h3>
 
-        <form action="submit" class="taskForm">
-            <label for="taskTitle">Task title</label>
-            <input type="text" id="taskTitle" placeholder="enter task title" required><br><br>
-    
-            <label for="estimatedTime">Estimated time</label>
-            <input type="date" id="estimatedTime" placeholder="enter estimatedTime" required><br><br>
-    
-            <label for="priority">Priority</label>
-            <select id="priority" required>
-                <option value="highest priority">top priority</option>
-                <option value="medium priority">medium priority</option>
-                <option value="least priority">least priority</option>
-            </select><br><br>
-            <button type="submit">Add</button>
-            <button type="button" id="closePopup">Cancel</button>
-        </form>
+      <form action="submit" class="taskForm">
+        <label for="taskTitle">Task title</label>
+        <input type="text" id="taskTitle" placeholder="enter task title" required/><br /><br />
 
+        <label for="estimatedTime">Estimated time</label>
+        <input type="date" id="estimatedTime" placeholder="enter estimatedTime" required/><br /><br />
+
+        <label for="priority">Priority</label>
+        <select id="priority" required>
+          <option value="top">top</option>
+          <option value="medium">medium</option>
+          <option value="least">least</option></select><br>
+        <button type="submit">Add</button>
+        <button type="button" id="closePopup">Cancel</button>
+      </form>
+    </div>
     </div>
 
     <table class="taskList">
-        <thead>
-            <tr>
-                <th>Task title</th>
-                <th>Estimated time</th>
-                <th>Priority</th>
-                <th>status</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
+      <thead>
+        <tr>
+          <th>Task title</th>
+          <th>Estimated time</th>
+          <th>Priority</th>
+          <th>status</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
 
-        <tbody id="tableBody"></tbody>
-
+      <tbody id="tableBody"></tbody>
     </table>
-    
-</body>
+  </body>
 </html>

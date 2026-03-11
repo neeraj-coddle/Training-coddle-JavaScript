@@ -1,108 +1,130 @@
-$(".taskList").hide()
-$(".popUp").hide()
+$(document).ready(function(){
+(".taskList").hide();
+$(".overlay").hide();
+$("#Message").show();
 
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-let tasks = JSON.parse(localStorage.getItem("tasks")) || []
+tasks.forEach(function (task) {
+  let strike =
+    task.status === "Done" ? "style='text-decoration: line-through'" : "";
 
-tasks.forEach(function(task){
+  let row =
+    "<tr " +
+    strike +
+    ">" +
+    "<td>" +
+    task.title +
+    "</td>" +
+    "<td>" +
+    task.date +
+    "</td>" +
+    "<td>" +
+    task.priority +
+    "</td>" +
+    "<td class='status'>" +
+    task.status +
+    (task.status === "Pending"
+      ? " <button class='doneButton'>Done</button>"
+      : "") +
+    "</td>" +
+    "<td><button class='deleteButton'>Delete</button></td>" +
+    "</tr>";
 
-let strike = task.status === "Done" ? "style='text-decoration: line-through'" : ""
+  $("#tableBody").append(row);
+});
 
-let row = "<tr "+strike+">" +
-"<td>"+task.title+"</td>" +
-"<td>"+task.date+"</td>" +
-"<td>"+task.priority+"</td>" +
-"<td class='status'>" + task.status +
-(task.status === "Pending" ? " <button class='doneButton'>Done</button>" : "") +
-"</td>" +
-"<td><button class='deleteButton'>Delete</button></td>" +
-"</tr>"
-
-$("#tableBody").append(row)
-}) 
-
-if(tasks.length > 0){
-$(".taskList").show()
+if (tasks.length > 0) {
+  $(".taskList").show();
+  $("#Message").hide();
+} else {
+  $(".taskList").hide();
+  $("#Message").show();
 }
 
+$("#addTask").on("click", function () {
+  $("#Message").hide();
+  $(".overlay").show();
+});
 
-$("#addTask").on("click",function(){
-$(".popUp").show()
-})
+$("#closePopup").on("click", function () {
+  $("#Message").show();
+  $(".overlay").hide();
+});
 
-
-$("#closePopup").on("click",function(){
-$(".popUp").hide()
-})
-
-
-$(".taskForm").on("submit",function(event){
-
-event.preventDefault()
-let date = $("#estimatedTime").val()
-  if (new Date(date) < new Date()){
-    alert("past date not allowed. please enter a date in future"); 
+$(".taskForm").on("submit", function (event) {
+  event.preventDefault();
+  let date = $("#estimatedTime").val();
+  if (new Date(date) < new Date()) {
+    alert("past date not allowed. please enter a date in future");
+    $("#estimatedTime").val("");
     return;
-  };
+  }
 
-let title = $("#taskTitle").val()
-let priority = $("#priority").val()
-tasks.push({
+  let title = $("#taskTitle").val();
+  let priority = $("#priority").val();
+  tasks.push({
     title: title,
     date: date,
-priority: priority,
-status: "Pending"
-})
+    priority: priority,
+    status: "Pending",
+  });
 
-localStorage.setItem("tasks", JSON.stringify(tasks))
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
-let row = "<tr>" +
-"<td>"+title+"</td>" +
-"<td>"+date+"</td>" +
-"<td>"+priority+"</td>" +
-"<td class='status'>Pending <button class='doneButton'>Done</button></td>" +
-"<td><button class='deleteButton'>Delete</button></td>" +
-"</tr>"
+  let row =
+    "<tr>" +
+    "<td>" +
+    title +
+    "</td>" +
+    "<td>" +
+    date +
+    "</td>" +
+    "<td>" +
+    priority +
+    "</td>" +
+    "<td class='status'>Pending <button class='doneButton'>Done</button></td>" +
+    "<td><button class='deleteButton'>Delete</button></td>" +
+    "</tr>";
 
+  $("#tableBody").prepend(row);
+  $("#Message").hide();
+  $(".taskList").show();
+  $(".overlay").hide();
 
+  $("#taskTitle").val("");
+  $("#estimatedTime").val("");
+  $("#priority").val("");
+});
 
-$("#tableBody").prepend(row)
-$(".taskList").show()
-$(".popUp").hide()
+$(document).on("click", ".doneButton", function () {
+  let row = $(this).closest("tr");
+  let index = row.index();
 
-$("#taskTitle").val("");
-$("#estimatedTime").val("");
-$("#priority").val("");
+  row.css("text-decoration", "line-through");
 
-})
+  $(this).parent().text("Done");
 
+  tasks[index].status = "Done";
 
-$(document).on("click",".doneButton",function(){
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
-let row = $(this).closest("tr")
-let index = row.index()
+  $(".taskList tbody").append(row);
+});
 
-row.css("text-decoration","line-through")
+$(document).on("click", ".deleteButton", function () {
+  let row = $(this).closest("tr");
+  let index = row.index();
 
-$(this).parent().text("Done")
+  tasks.splice(index, 1);
 
-tasks[index].status = "Done"
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
-localStorage.setItem("tasks", JSON.stringify(tasks))
+  row.remove();
 
-$(".taskList tbody").append(row)
-
-})
-
-$(document).on("click",".deleteButton",function(){ 
-
-let row = $(this).closest("tr")
-let index = row.index()
-
-tasks.splice(index,1)
-
-localStorage.setItem("tasks", JSON.stringify(tasks))
-
-row.remove()
-
+  if (tasks.length == 0) {
+    $(".taskList").hide();
+    $("#Message").show();
+  }
+});
 })
