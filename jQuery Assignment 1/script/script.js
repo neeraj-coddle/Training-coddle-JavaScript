@@ -1,5 +1,7 @@
 $(".taskList").hide()
 $(".popUp").hide()
+$("#priority").val("");
+
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || []
 
@@ -14,10 +16,11 @@ let row = "<tr "+strike+">" +
 "<td class='status'>" + task.status +
 (task.status === "Pending" ? " <button class='doneButton'>Done</button>" : "") +
 "</td>" +
+"<td><button class='deleteButton'>Delete</button></td>" +
 "</tr>"
 
 $("#tableBody").append(row)
-})
+}) 
 
 if(tasks.length > 0){
 $(".taskList").show()
@@ -55,10 +58,12 @@ let row = "<tr>" +
 "<td>"+date+"</td>" +
 "<td>"+priority+"</td>" +
 "<td class='status'>Pending <button class='doneButton'>Done</button></td>" +
+"<td><button class='deleteButton'>Delete</button></td>" +
 "</tr>"
 
 
-$("#tableBody").append(row)
+
+$("#tableBody").prepend(row)
 $(".taskList").show()
 $(".popUp").hide()
 
@@ -81,5 +86,20 @@ $(this).parent().text("Done")
 tasks[index].status = "Done"
 
 localStorage.setItem("tasks", JSON.stringify(tasks))
+
+$(".taskList tbody").append(row)
+
+})
+
+$(document).on("click",".deleteButton",function(){
+
+let row = $(this).closest("tr")
+let index = row.index()
+
+tasks.splice(index,1)
+
+localStorage.setItem("tasks", JSON.stringify(tasks))
+
+row.remove()
 
 })
