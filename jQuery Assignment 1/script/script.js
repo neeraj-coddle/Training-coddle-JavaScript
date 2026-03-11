@@ -1,6 +1,5 @@
 $(".taskList").hide()
 $(".popUp").hide()
-$("#priority").val("");
 
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || []
