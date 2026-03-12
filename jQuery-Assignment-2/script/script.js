@@ -19,7 +19,7 @@ $(document).ready(function () {
       isValid = false;
     }
 
-    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let emailPattern = /^[a-zA-Z0-9_%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
 
     if (email == "") {
       $(".emailError").text("Email is required");
@@ -48,6 +48,17 @@ $(document).ready(function () {
       let today = new Date();
 
       let age = today.getFullYear() - birthDate.getFullYear();
+      console.log("ageLog1",age);
+      
+      let monthDifference = today.getMonth() - birthDate.getMonth();
+
+      if (monthDifference < 0) {
+        age--;
+        console.log("ageLog2",age);
+      } else if (monthDifference === 0 && today.getDate() < birthDate.getDate()) {
+        age--;
+        console.log("ageLog3",age);
+      }
 
       if (age < 18) {
         $(".dobError").text("You must be at least 18 years old");
@@ -55,26 +66,15 @@ $(document).ready(function () {
       }
     }
 
+    let passPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
     if (password == "") {
       $(".passwordError").text("Password is required");
       isValid = false;
-    } else if (!/[a-z]/.test(password)) {
+    } else if (!passPattern.test(password)) {
       $(".passwordError").text(
-        "password must contain atleast one lowercase letter",
+        "Password must contain at least 8 characters, uppercase letter, lowercase letter, and one number",
       );
-      isValid = false;
-    } else if (!/[A-Z]/.test(password)) {
-      $(".passwordError").text(
-        "password must contain atleast one uppercase letter",
-      );
-      isValid = false;
-    } else if (!/\d/.test(password)) {
-      $(".passwordError").text(
-        "Try to include atleast one number in your password",
-      );
-      isValid = false;
-    } else if (password.length < 8) {
-      $(".passwordError").text("Password must contain more than 8 characters");
       isValid = false;
     }
 
