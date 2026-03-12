@@ -1,0 +1,14 @@
+body{
+    font-family: Arial;
+    margin: 40px;
+}
+
+input, textarea{
+    width: 250px;
+    padding: 5px;
+}
+
+.error{
+    color: red;
+    font-size: 14px;
+}
