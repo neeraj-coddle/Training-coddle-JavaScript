@@ -19,7 +19,7 @@ $(document).ready(function () {
       isValid = false;
     }
 
-    let emailPattern = /^[a-zA-Z0-9_%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[A-Za-z]{2,}$/;
 
     if (email == "") {
       $(".email-error").text("Email is required");
