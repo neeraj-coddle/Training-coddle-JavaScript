@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#signupForm").on("submit", function (e) {
+  $("#signup-form").on("submit", function (e) {
     e.preventDefault();
 
     $(".error").text("");
@@ -9,39 +9,39 @@ $(document).ready(function () {
     let phone = $("#phone").val().trim();
     let dob = $("#dob").val();
     let password = $("#password").val();
-    let confirmPassword = $("#confirmPassword").val();
+    let confirm-password = $("#confirm-password").val();
     let description = $("#description").val().trim();
 
     let isValid = true;
 
     if (name == "") {
-      $(".nameError").text("Name is required");
+      $(".name-error").text("Name is required");
       isValid = false;
     }
 
     let emailPattern = /^[a-zA-Z0-9_%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
 
     if (email == "") {
-      $(".emailError").text("Email is required");
+      $(".email-error").text("Email is required");
       isValid = false;
     } else if (!emailPattern.test(email)) {
-      $(".emailError").text("Enter valid email");
+      $(".email-error").text("Enter valid email");
       isValid = false;
     }
 
     if (phone == "") {
-      $(".phoneError").text("Phone is required");
+      $(".phone-error").text("Phone is required");
       isValid = false;
     } else if (phone.length !== 10) {
-      $(".phoneError").text("Phone must be 10 digits");
+      $(".phone-error").text("Phone must be 10 digits");
       isValid = false;
     } else if (isNaN(phone)) {
-      $(".phoneError").text("only number is allowed");
+      $(".phone-error").text("only number is allowed");
       isValid = false;
     }
 
     if (dob == "") {
-      $(".dobError").text("Date of birth is required");
+      $(".dob-error").text("Date of birth is required");
       isValid = false;
     } else {
       let birthDate = new Date(dob);
@@ -61,7 +61,7 @@ $(document).ready(function () {
       }
 
       if (age < 18) {
-        $(".dobError").text("You must be at least 18 years old");
+        $(".dob-error").text("You must be at least 18 years old");
         isValid = false;
       }
     }
@@ -69,28 +69,28 @@ $(document).ready(function () {
     let passPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
     if (password == "") {
-      $(".passwordError").text("Password is required");
+      $(".password-error").text("Password is required");
       isValid = false;
     } else if (!passPattern.test(password)) {
-      $(".passwordError").text(
+      $(".password-error").text(
         "Password must contain at least 8 characters, uppercase letter, lowercase letter, and one number",
       );
       isValid = false;
     }
 
-    if (confirmPassword == "") {
-      $(".confirmPasswordError").text("Confirm password is required");
+    if (confirm-password == "") {
+      $(".confirm-password-error").text("Confirm password is required");
       isValid = false;
-    } else if (confirmPassword !== password) {
-      $(".confirmPasswordError").text("Passwords do not match");
+    } else if (confirm-password !== password) {
+      $(".confirm-password-error").text("Passwords do not match");
       isValid = false;
     }
 
     if (description == "") {
-      $(".descriptionError").text("Description is required");
+      $(".description-error").text("Description is required");
       isValid = false;
     } else if (description.length < 20) {
-      $(".descriptionError").text("Description must be at least 20 characters");
+      $(".description-error").text("Description must be at least 20 characters");
       isValid = false;
     }
 
