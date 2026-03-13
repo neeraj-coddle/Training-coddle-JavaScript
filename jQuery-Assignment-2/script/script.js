@@ -9,7 +9,7 @@ $(document).ready(function () {
     let phone = $("#phone").val().trim();
     let dob = $("#dob").val();
     let password = $("#password").val();
-    let confirm-password = $("#confirm-password").val();
+    let confirmpassword = $("#confirm-password").val();
     let description = $("#description").val().trim();
 
     let isValid = true;
@@ -78,10 +78,10 @@ $(document).ready(function () {
       isValid = false;
     }
 
-    if (confirm-password == "") {
+    if (confirmpassword == "") {
       $(".confirm-password-error").text("Confirm password is required");
       isValid = false;
-    } else if (confirm-password !== password) {
+    } else if (confirmpassword !== password) {
       $(".confirm-password-error").text("Passwords do not match");
       isValid = false;
     }
