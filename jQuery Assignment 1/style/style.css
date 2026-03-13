@@ -4,11 +4,11 @@ body{
     border: 1px solid rgb(182, 174, 174);
 }
 
-#addTask{
+#add-task{
     border-radius: 6px;
 }
 
-/* .taskList{
+/* .task-list{
     display: none;
 } */
 
@@ -16,7 +16,7 @@ h1{
     text-align: center;
 }
 
-#taskForm{
+#task-form{
     display: flex;
     flex-direction: column;
     gap: 10px;

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-(".taskList").hide();
+$(".task-list").hide();
 $(".overlay").hide();
 $("#Message").show();
 
@@ -31,37 +31,37 @@ tasks.forEach(function (task) {
     "<td><button class='deleteButton'>Delete</button></td>" +
     "</tr>";
 
-  $("#tableBody").append(row);
+  $("#table-body").append(row);
 });
 
 if (tasks.length > 0) {
-  $(".taskList").show();
+  $(".task-list").show();
   $("#Message").hide();
 } else {
-  $(".taskList").hide();
+  $(".task-list").hide();
   $("#Message").show();
 }
 
-$("#addTask").on("click", function () {
+$("#add-task").on("click", function () {
   $("#Message").hide();
   $(".overlay").show();
 });
 
-$("#closePopup").on("click", function () {
+$("#close-popup").on("click", function () {
   $("#Message").show();
   $(".overlay").hide();
 });
 
-$(".taskForm").on("submit", function (event) {
+$(".task-form").on("submit", function (event) {
   event.preventDefault();
-  let date = $("#estimatedTime").val();
+  let date = $("#estimated-time").val();
   if (new Date(date) < new Date()) {
     alert("past date not allowed. please enter a date in future");
-    $("#estimatedTime").val("");
+    $("#estimated-time").val("");
     return;
   }
 
-  let title = $("#taskTitle").val();
+  let title = $("#task-title").val();
   let priority = $("#priority").val();
   tasks.push({
     title: title,
@@ -87,13 +87,13 @@ $(".taskForm").on("submit", function (event) {
     "<td><button class='deleteButton'>Delete</button></td>" +
     "</tr>";
 
-  $("#tableBody").prepend(row);
+  $("#table-body").prepend(row);
   $("#Message").hide();
-  $(".taskList").show();
+  $(".task-list").show();
   $(".overlay").hide();
 
-  $("#taskTitle").val("");
-  $("#estimatedTime").val("");
+  $("#task-title").val("");
+  $("#estimated-time").val("");
   $("#priority").val("");
 });
 
@@ -109,7 +109,7 @@ $(document).on("click", ".doneButton", function () {
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
 
-  $(".taskList tbody").append(row);
+  $(".task-list tbody").append(row);
 });
 
 $(document).on("click", ".deleteButton", function () {
@@ -123,7 +123,7 @@ $(document).on("click", ".deleteButton", function () {
   row.remove();
 
   if (tasks.length == 0) {
-    $(".taskList").hide();
+    $(".task-list").hide();
     $("#Message").show();
   }
 });
